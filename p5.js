@@ -8,18 +8,38 @@ var yspeed=15;
 var score=0;
 var stop=0;
 var diff=200;
+
+function random_color(){
+  let r,g,b;
+  r = random(100, 255);
+  g = random(100, 255);
+  b = random(100, 255);
+  random_c = color(r,g,b);
+}
+
 function setup(){
   createCanvas(600,600);
+  random_color();
+  c=random_c;
 }
 function draw(){
+
+  
   if(stop==0){
+
   background(0);
+  
   fill(1000);
   textSize(24);
   text(score, 10, 10, 170, 180);
 
-  rect(x, 500, diff, 30, 20);
+  fill(random_c);
   ellipse(xcerc, ycerc, 55, 55);
+
+  fill(c);
+  rect(x, 500, diff, 30, 20);
+  
+  
 
   if(ok==1){
 
@@ -41,6 +61,7 @@ function draw(){
       xcerc+=2;
       speed=-3;
       score+=10;
+      random_color();
     }
   }
   if(ycerc==480){
@@ -49,18 +70,20 @@ function draw(){
       xcerc-=2;
       speed=3;
       score+=10;
+      random_color();
     }
   }
   if(ycerc==0){
     yspeed=10;
+    random_color();
   }
   if(xcerc+15>width)
   {
     speed=-4;
-
+    random_color();
   }
   if(xcerc<0){
-
+    random_color();
     speed=3;
   }
 
